@@ -152,6 +152,7 @@
             this.saveBook.TabIndex = 11;
             this.saveBook.Text = "Save Book";
             this.saveBook.UseVisualStyleBackColor = true;
+            this.saveBook.Click += new System.EventHandler(this.saveBook_Click);
             // 
             // Add_books
             // 

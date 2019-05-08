@@ -36,5 +36,10 @@ namespace WindowsFormsApplication2
         {
             new RemoveBook().ShowDialog();
         }
+
+        private void Home_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

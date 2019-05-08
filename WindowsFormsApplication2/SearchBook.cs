@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApplication2
 {
     public partial class SearchBooks : Form
     {
+        private MySqlConnection mysqlCon = dbConnection.getDBCon();
+
         public SearchBooks()
         {
             InitializeComponent();
@@ -24,8 +27,16 @@ namespace WindowsFormsApplication2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'mP_LibraryDataSet.book' table. You can move, or remove it, as needed.
-            this.bookTableAdapter.Fill(this.mP_LibraryDataSet.book);
+            mysqlCon.Open();
+            MySqlCommand cmd = new MySqlCommand("select * from book", mysqlCon);
+
+            cmd.ExecuteNonQuery();
+            Console.WriteLine("searching books");
+            DataTable dt = new DataTable();
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
+            mysqlCon.Close();
 
         }
 

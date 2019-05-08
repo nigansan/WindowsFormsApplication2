@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+
 
 namespace WindowsFormsApplication2
 {
@@ -14,6 +16,7 @@ namespace WindowsFormsApplication2
     {
 
         private int prop_1 = 1;
+        private MySqlConnection mysqlCon = dbConnection.getDBCon();
 
         public Login()
         {
@@ -22,11 +25,14 @@ namespace WindowsFormsApplication2
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
-
-            if (userNameTxt.Text == "Nigansan" && passwordTxt.Text == "123" )
+            checkUser();
+            //if (userNameTxt.Text == "Nigansan" && passwordTxt.Text == "123" )
+            /*
+            if (mysqlCon != null)
             {
                 MessageBox.Show("Welcome");
-                new Home().ShowDialog();
+                new Home().Show();
+                this.Hide();
                 //new Home().ShowDialog();
             }
             else
@@ -35,6 +41,37 @@ namespace WindowsFormsApplication2
 
 
             }
+            */
+        }
+
+        private void checkUser()
+        {
+            mysqlCon.Open();
+            var userName = userNameTxt.Text;
+            var password = passwordTxt.Text;
+            MySqlCommand cmd = new MySqlCommand("select * from users where userName = @un and password = @ps", mysqlCon);
+            cmd.Parameters.AddWithValue("@un", userName);
+            cmd.Parameters.AddWithValue("@ps", password);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+            Console.WriteLine("called dataset");
+            var res = reader.Read();
+            Console.WriteLine(res);
+            if (res == true)
+            {
+                MessageBox.Show("Welcome " + userName);
+                new Home().Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("login  : " + "Login Faliure");
+                this.Hide();
+            }
+            mysqlCon.Close();
+
+
+            //Console.WriteLine(ds.Tables[0].Rows[0]["userName"].ToString());
 
         }
 
