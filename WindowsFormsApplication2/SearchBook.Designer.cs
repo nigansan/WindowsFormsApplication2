@@ -36,16 +36,18 @@
             this.byIsbn = new System.Windows.Forms.CheckBox();
             this.lend = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.mP_LibraryDataSet = new WindowsFormsApplication2.MP_LibraryDataSet();
             this.bookBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mP_LibraryDataSet = new WindowsFormsApplication2.MP_LibraryDataSet();
             this.bookTableAdapter = new WindowsFormsApplication2.MP_LibraryDataSetTableAdapters.bookTableAdapter();
+            this.SearchButton = new System.Windows.Forms.Button();
+            this.ResetButton = new System.Windows.Forms.Button();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.authorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.languageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mP_LibraryDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mP_LibraryDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // search_books
@@ -62,7 +64,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(56, 143);
+            this.textBox1.Location = new System.Drawing.Point(56, 109);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(447, 20);
             this.textBox1.TabIndex = 1;
@@ -104,7 +106,7 @@
             // lend
             // 
             this.lend.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lend.Location = new System.Drawing.Point(427, 360);
+            this.lend.Location = new System.Drawing.Point(383, 360);
             this.lend.Name = "lend";
             this.lend.Size = new System.Drawing.Size(128, 41);
             this.lend.TabIndex = 8;
@@ -113,7 +115,11 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
@@ -121,24 +127,48 @@
             this.authorDataGridViewTextBoxColumn,
             this.languageDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.bookBindingSource;
+            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridView1.Enabled = false;
+            this.dataGridView1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dataGridView1.Location = new System.Drawing.Point(56, 189);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(447, 150);
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(446, 150);
             this.dataGridView1.TabIndex = 9;
-            // 
-            // mP_LibraryDataSet
-            // 
-            this.mP_LibraryDataSet.DataSetName = "MP_LibraryDataSet";
-            this.mP_LibraryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bookBindingSource
             // 
             this.bookBindingSource.DataMember = "book";
             this.bookBindingSource.DataSource = this.mP_LibraryDataSet;
             // 
+            // mP_LibraryDataSet
+            // 
+            this.mP_LibraryDataSet.DataSetName = "MP_LibraryDataSet";
+            this.mP_LibraryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // bookTableAdapter
             // 
             this.bookTableAdapter.ClearBeforeFill = true;
+            // 
+            // SearchButton
+            // 
+            this.SearchButton.Location = new System.Drawing.Point(331, 146);
+            this.SearchButton.Name = "SearchButton";
+            this.SearchButton.Size = new System.Drawing.Size(75, 23);
+            this.SearchButton.TabIndex = 10;
+            this.SearchButton.Text = "Search";
+            this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // ResetButton
+            // 
+            this.ResetButton.Location = new System.Drawing.Point(427, 146);
+            this.ResetButton.Name = "ResetButton";
+            this.ResetButton.Size = new System.Drawing.Size(75, 23);
+            this.ResetButton.TabIndex = 11;
+            this.ResetButton.Text = "Reset";
+            this.ResetButton.UseVisualStyleBackColor = true;
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -146,31 +176,40 @@
             this.idDataGridViewTextBoxColumn.HeaderText = "id";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Width = 40;
             // 
             // nameDataGridViewTextBoxColumn
             // 
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
             this.nameDataGridViewTextBoxColumn.HeaderText = "name";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn.Width = 58;
             // 
             // authorDataGridViewTextBoxColumn
             // 
             this.authorDataGridViewTextBoxColumn.DataPropertyName = "author";
             this.authorDataGridViewTextBoxColumn.HeaderText = "author";
             this.authorDataGridViewTextBoxColumn.Name = "authorDataGridViewTextBoxColumn";
+            this.authorDataGridViewTextBoxColumn.ReadOnly = true;
+            this.authorDataGridViewTextBoxColumn.Width = 62;
             // 
             // languageDataGridViewTextBoxColumn
             // 
             this.languageDataGridViewTextBoxColumn.DataPropertyName = "language";
             this.languageDataGridViewTextBoxColumn.HeaderText = "language";
             this.languageDataGridViewTextBoxColumn.Name = "languageDataGridViewTextBoxColumn";
+            this.languageDataGridViewTextBoxColumn.ReadOnly = true;
+            this.languageDataGridViewTextBoxColumn.Width = 76;
             // 
             // SearchBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(622, 447);
+            this.ClientSize = new System.Drawing.Size(943, 447);
+            this.Controls.Add(this.ResetButton);
+            this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lend);
             this.Controls.Add(this.byIsbn);
@@ -182,8 +221,8 @@
             this.Text = "Search Books";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mP_LibraryDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mP_LibraryDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,6 +240,8 @@
         private MP_LibraryDataSet mP_LibraryDataSet;
         private System.Windows.Forms.BindingSource bookBindingSource;
         private MP_LibraryDataSetTableAdapters.bookTableAdapter bookTableAdapter;
+        private System.Windows.Forms.Button SearchButton;
+        private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn authorDataGridViewTextBoxColumn;
