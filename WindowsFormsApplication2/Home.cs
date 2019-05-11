@@ -41,5 +41,15 @@ namespace WindowsFormsApplication2
         {
             Application.Exit();
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            new AddMembers().ShowDialog();
+        }
     }
 }

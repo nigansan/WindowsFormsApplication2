@@ -39,10 +39,13 @@
             this.remove = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.remove_books = new System.Windows.Forms.Label();
-            this.bookTableAdapter = new WindowsFormsApplication2.MP_LibraryDataSetTableAdapters.bookTableAdapter();
             this.byBooktitle = new System.Windows.Forms.RadioButton();
             this.byBookauthor = new System.Windows.Forms.RadioButton();
             this.byIsbn = new System.Windows.Forms.RadioButton();
+            this.bookTableAdapter = new WindowsFormsApplication2.MP_LibraryDataSetTableAdapters.bookTableAdapter();
+            this.Search = new System.Windows.Forms.Button();
+            this.ResetButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mP_LibraryDataSet)).BeginInit();
@@ -60,8 +63,10 @@
             this.dataGridView1.DataSource = this.bookBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(126, 175);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(447, 150);
             this.dataGridView1.TabIndex = 16;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -101,16 +106,17 @@
             // remove
             // 
             this.remove.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.remove.Location = new System.Drawing.Point(497, 346);
+            this.remove.Location = new System.Drawing.Point(451, 342);
             this.remove.Name = "remove";
             this.remove.Size = new System.Drawing.Size(128, 41);
             this.remove.TabIndex = 15;
             this.remove.Text = "Remove";
             this.remove.UseVisualStyleBackColor = true;
+            this.remove.Click += new System.EventHandler(this.remove_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(126, 129);
+            this.textBox1.Location = new System.Drawing.Point(126, 107);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(447, 20);
             this.textBox1.TabIndex = 11;
@@ -125,10 +131,6 @@
             this.remove_books.TabIndex = 10;
             this.remove_books.Text = "Remove Books";
             this.remove_books.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // bookTableAdapter
-            // 
-            this.bookTableAdapter.ClearBeforeFill = true;
             // 
             // byBooktitle
             // 
@@ -163,11 +165,49 @@
             this.byIsbn.Text = "By ISBN";
             this.byIsbn.UseVisualStyleBackColor = true;
             // 
+            // bookTableAdapter
+            // 
+            this.bookTableAdapter.ClearBeforeFill = true;
+            // 
+            // Search
+            // 
+            this.Search.Location = new System.Drawing.Point(392, 132);
+            this.Search.Name = "Search";
+            this.Search.Size = new System.Drawing.Size(75, 23);
+            this.Search.TabIndex = 20;
+            this.Search.Text = "Search";
+            this.Search.UseVisualStyleBackColor = true;
+            this.Search.Click += new System.EventHandler(this.Search_Click);
+            // 
+            // ResetButton
+            // 
+            this.ResetButton.Location = new System.Drawing.Point(497, 132);
+            this.ResetButton.Name = "ResetButton";
+            this.ResetButton.Size = new System.Drawing.Size(75, 23);
+            this.ResetButton.TabIndex = 21;
+            this.ResetButton.Text = "Reset";
+            this.ResetButton.UseVisualStyleBackColor = true;
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(296, 342);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(128, 41);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Cancel";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // RemoveBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(747, 405);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ResetButton);
+            this.Controls.Add(this.Search);
             this.Controls.Add(this.byIsbn);
             this.Controls.Add(this.byBookauthor);
             this.Controls.Add(this.byBooktitle);
@@ -201,5 +241,8 @@
         private System.Windows.Forms.RadioButton byBooktitle;
         private System.Windows.Forms.RadioButton byBookauthor;
         private System.Windows.Forms.RadioButton byIsbn;
+        private System.Windows.Forms.Button Search;
+        private System.Windows.Forms.Button ResetButton;
+        private System.Windows.Forms.Button button1;
     }
 }

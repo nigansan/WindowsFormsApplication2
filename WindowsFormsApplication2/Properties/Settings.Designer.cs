@@ -33,5 +33,16 @@ namespace WindowsFormsApplication2.Properties {
                 return ((string)(this["db_connection"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;password=test1;persistsecurityinfo=True;database=mp" +
+            "library;allowuservariables=True")]
+        public string mplibraryConnectionString {
+            get {
+                return ((string)(this["mplibraryConnectionString"]));
+            }
+        }
     }
 }
