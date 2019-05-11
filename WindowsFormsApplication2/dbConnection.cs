@@ -12,7 +12,7 @@ namespace WindowsFormsApplication2
     {
         public static MySqlConnection getDBCon()
         {
-            MySqlConnection con = new MySqlConnection("server=localhost;user id=root;password=test1;persistsecurityinfo=True;database=mplibrary");
+            MySqlConnection con = new MySqlConnection("server=localhost;user id=root;password=;persistsecurityinfo=True;database=mplibrary");
             return con;
         }
 
