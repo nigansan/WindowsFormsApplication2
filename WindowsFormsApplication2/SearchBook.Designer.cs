@@ -36,10 +36,6 @@
             this.byIsbn = new System.Windows.Forms.CheckBox();
             this.lend = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.authorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.languageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bookBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mP_LibraryDataSet = new WindowsFormsApplication2.MP_LibraryDataSet();
             this.bookTableAdapter = new WindowsFormsApplication2.MP_LibraryDataSetTableAdapters.bookTableAdapter();
@@ -119,57 +115,18 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
-            this.authorDataGridViewTextBoxColumn,
-            this.languageDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.bookBindingSource;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dataGridView1.Location = new System.Drawing.Point(56, 189);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(446, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(793, 150);
             this.dataGridView1.TabIndex = 9;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Width = 40;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn.Width = 58;
-            // 
-            // authorDataGridViewTextBoxColumn
-            // 
-            this.authorDataGridViewTextBoxColumn.DataPropertyName = "author";
-            this.authorDataGridViewTextBoxColumn.HeaderText = "author";
-            this.authorDataGridViewTextBoxColumn.Name = "authorDataGridViewTextBoxColumn";
-            this.authorDataGridViewTextBoxColumn.ReadOnly = true;
-            this.authorDataGridViewTextBoxColumn.Width = 62;
-            // 
-            // languageDataGridViewTextBoxColumn
-            // 
-            this.languageDataGridViewTextBoxColumn.DataPropertyName = "language";
-            this.languageDataGridViewTextBoxColumn.HeaderText = "language";
-            this.languageDataGridViewTextBoxColumn.Name = "languageDataGridViewTextBoxColumn";
-            this.languageDataGridViewTextBoxColumn.ReadOnly = true;
-            this.languageDataGridViewTextBoxColumn.Width = 76;
             // 
             // bookBindingSource
             // 
@@ -257,10 +214,6 @@
         private MP_LibraryDataSetTableAdapters.bookTableAdapter bookTableAdapter;
         private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.Button ResetButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn authorDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn languageDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button button1;
     }
 }

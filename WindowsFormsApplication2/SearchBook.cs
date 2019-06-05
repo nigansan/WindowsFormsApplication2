@@ -16,6 +16,7 @@ namespace WindowsFormsApplication2
     {
         private MySqlConnection mysqlCon = dbConnection.getDBCon();
         int i = 0;
+        int currQty = 0;
         public SearchBooks()
         {
             InitializeComponent();
@@ -167,7 +168,23 @@ namespace WindowsFormsApplication2
 
                 cmd.ExecuteNonQuery();
                 Console.WriteLine("lending books");
+
+                MySqlCommand selectIniQty = new MySqlCommand("select `CurrQty` from `book` WHERE id=" + i + "", mysqlCon);
+                using (MySqlDataReader reader = selectIniQty.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        currQty = Convert.ToInt32(reader["CurrQty"].ToString());
+                    }
+                }
+
+                MySqlCommand updateQuantity = new MySqlCommand("UPDATE `book` SET `CurrQty`=@an WHERE id=" + i + "", mysqlCon);
+                updateQuantity.Parameters.AddWithValue("@an", (currQty - 1));
+
+                updateQuantity.ExecuteNonQuery();
+                Console.WriteLine("lending books");
                 mysqlCon.Close();
+                Load_Book_Data();
             }
             catch (Exception ex)
             {

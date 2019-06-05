@@ -49,12 +49,13 @@ namespace WindowsFormsApplication2
                 Console.WriteLine(time);
                 var timestamp = date + " " + time;
 
-                MySqlCommand cmd = new MySqlCommand("INSERT INTO book (`Name`,`isbn`,`Author`,`Language`,`IniQty`,`CreatedAt`) VALUES (@bt,@is,@an,@lan,@qt,@ts)", mysqlCon);
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO book (`Name`,`isbn`,`Author`,`Language`,`IniQty`,`CurrQty`,`CreatedAt`) VALUES (@bt,@is,@an,@lan,@qt,@qy,@ts)", mysqlCon);
                 cmd.Parameters.AddWithValue("@bt", booktitle);
                 cmd.Parameters.AddWithValue("@is", isbnNo);
                 cmd.Parameters.AddWithValue("@an", authName);
                 cmd.Parameters.AddWithValue("@lan", lang);
                 cmd.Parameters.AddWithValue("@qt", quantity);
+                cmd.Parameters.AddWithValue("@qy", quantity);
                 cmd.Parameters.AddWithValue("@ts", timestamp);
 
                 int res = cmd.ExecuteNonQuery();
@@ -209,12 +210,13 @@ namespace WindowsFormsApplication2
                 Console.WriteLine(time);
                 var timestamp = date + " " + time;
 
-                MySqlCommand cmd = new MySqlCommand("UPDATE `book` SET `Name`=@bt,`isbn`=@is,`Author`=@an,`Language`=@lan,`IniQty`=@qt,`CreatedAt`=@ts WHERE id=" + i + "", mysqlCon);
+                MySqlCommand cmd = new MySqlCommand("UPDATE `book` SET `Name`=@bt,`isbn`=@is,`Author`=@an,`Language`=@lan,`IniQty`=@qt,`CurrQty`=@qy,`CreatedAt`=@ts WHERE id=" + i + "", mysqlCon);
                 cmd.Parameters.AddWithValue("@bt", booktitle);
                 cmd.Parameters.AddWithValue("@is", isbnNo);
                 cmd.Parameters.AddWithValue("@an", authName);
                 cmd.Parameters.AddWithValue("@lan", lang);
                 cmd.Parameters.AddWithValue("@qt", quantity);
+                cmd.Parameters.AddWithValue("@qy", quantity);
                 cmd.Parameters.AddWithValue("@ts", timestamp);
 
                 int res = cmd.ExecuteNonQuery();
